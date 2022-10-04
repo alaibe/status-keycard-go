@@ -46,7 +46,7 @@ func startKeycardContext() (*keycardContext, error) {
 func (kc *keycardContext) start() error {
 	cardCtx, err := scard.EstablishContext()
 	if err != nil {
-		err = newKeycardError("no pcsc service")
+		err = newKeycardError(err.Error())
 		l(err.Error())
 		close(kc.connected)
 		return err
